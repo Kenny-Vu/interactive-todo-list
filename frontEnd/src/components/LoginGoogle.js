@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "../AuthContext";
 import { database } from "firebase";
 
 function Login() {
@@ -31,8 +31,13 @@ function Login() {
 
   return (
     <div>
-      <button onClick={handleGoogleSignIn}> Sign In with Google</button>
+      <button className="login-google-button" onClick={handleGoogleSignIn}>
+        {" "}
+        Sign In with Google
+      </button>
       {/* <div id="firebaseui-auth-container"></div> */}
     </div>
   );
 }
+
+export default Login;

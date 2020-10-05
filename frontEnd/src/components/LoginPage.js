@@ -1,5 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
+import Login from "./LoginGoogle";
+import LoginWithEmail from "./LoginInEmailPassword";
 
 const LoginPage = () => {
   return (
@@ -19,7 +21,8 @@ const LoginPage = () => {
         </div>
         <div className="form-container">
           <form>
-            <button className="login-google-button">Log In with Google</button>
+            <Login />
+            <LoginWithEmail />
           </form>
         </div>
       </div>
