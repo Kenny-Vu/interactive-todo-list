@@ -1,8 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
 
 import withFirebaseAuth from "react-with-firebase-auth";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 export const AuthContext = createContext(null);
 
@@ -46,8 +47,9 @@ const AuthProvider = ({ children, signOut, user }) => {
     if (user && Object.keys(user).length > 0) {
       setAppUser(user);
     }
+    console.log(appUser, "---APP USER");
   }, [user]);
-  console.log(appUser, "---APP USER");
+
   return (
     <AuthContext.Provider
       value={{
