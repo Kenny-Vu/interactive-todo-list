@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import withFirebaseAuth from "react-with-firebase-auth";
 import firebase from "firebase/app";
@@ -20,21 +21,24 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const firebaseAppAuth = firebaseApp.auth();
 
-function createUserWithEmail(email, password) {
-  return firebase.auth().createUserWithEmailAndPassword(email, password);
-}
-
-function signInWithEmail(email, password) {
-  return firebase.auth().signInWithEmailAndPassword(email, password);
-}
-
-const AuthProvider = ({ children, signOut, user }) => {
+const AuthProvider = ({
+  children,
+  signOut,
+  user,
+  createUserWithEmail,
+  signInWithEmail,
+}) => {
   const [appUser, setAppUser] = useState(null);
-  // const [message, setMessage] = useState("");
+  const history = useHistory();
 
   const handleSignOut = () => {
-    signOut();
-    setAppUser({});
+    signOut().then((result) => {
+      setAppUser({});
+      firebase
+        .auth()
+        .currentUser.delete()
+        .then(() => history.push("/login"));
+    });
   };
 
   const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -46,8 +50,8 @@ const AuthProvider = ({ children, signOut, user }) => {
   useEffect(() => {
     if (user && Object.keys(user).length > 0) {
       setAppUser(user);
+      console.log(appUser, "---APP USER");
     }
-    console.log(appUser, "---APP USER");
   }, [user]);
 
   return (

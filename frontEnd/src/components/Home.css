@@ -1,0 +1,69 @@
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  height: 100%;
+  width: 100%;
+}
+.exp-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+.exp-bar {
+  width: 80%;
+  height: 90%;
+  background: linear-gradient(to right, green, yellow);
+  border: solid;
+}
+
+.user-stats {
+  flex-direction: column;
+  width: 100%;
+}
+
+.task-adder-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: 1rem 0;
+  border: solid;
+}
+
+.home-avatar {
+  height: 300px;
+  display: flex;
+  border: solid;
+}
+.home-avatar img {
+  width: 300px;
+  height: 300px;
+  image-rendering: pixelated;
+}
+.task-list {
+  width: 100%;
+}
+
+@media only screen and (min-width: 800px) {
+  .user-stats {
+    border: solid;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    height: 100%;
+  }
+  .task-adder-container {
+    flex: 1;
+    justify-content: center;
+  }
+  .home-avatar {
+    height: 300px;
+    width: 300px;
+  }
+  .task-list {
+    flex: 1;
+  }
+}
