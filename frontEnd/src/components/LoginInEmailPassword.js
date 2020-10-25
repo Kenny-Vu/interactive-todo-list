@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import styled from "styled-components";
 
 import TextField from "@material-ui/core/TextField";
 
+import "./LoginInEmailPassword.css";
 import { AuthContext } from "../AuthContext";
 
-function LoginWithEmail() {
+function LoginWithEmail({ accountCreated }) {
   const { createUserWithEmail, signInWithEmail } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accountCreated, setAccountCreated] = useState(true);
+  // const [accountCreated, setAccountCreated] = useState(true);
 
   const history = useHistory();
 
@@ -30,8 +30,8 @@ function LoginWithEmail() {
   };
 
   return (
-    <Wrapper>
-      <StyledForm onSubmit={submitForm}>
+    <div className="login-wrapper">
+      <form className="login-form" onSubmit={submitForm}>
         <TextField
           type="email"
           label="Email"
@@ -49,57 +49,23 @@ function LoginWithEmail() {
         <button type="submit">
           {accountCreated ? "Sign In" : "Create Account"}
         </button>
-      </StyledForm>
+      </form>
       {accountCreated === true ? (
-        <NewAccountContainer>
+        <div className="new-account-container">
           <span>{"New Here? "}</span>
-          <StyledLink to="/signup">Create an Account</StyledLink>
-        </NewAccountContainer>
+          <Link className="new-account-link" to="/signup">
+            Create an Account
+          </Link>
+        </div>
       ) : (
-        <NewAccountContainer>
+        <div className="new-account-container">
           <span>Already Have an Account?</span>
-          <StyledLink to="/login">Sign In</StyledLink>
-        </NewAccountContainer>
+          <Link className="new-account-link" to="/login">
+            Sign In
+          </Link>
+        </div>
       )}
-    </Wrapper>
+    </div>
   );
 }
-
-const Wrapper = styled.div`
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 80vh;
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  border: 1px solid black;
-  border-radius: 6px;
-  padding: 0 16px;
-  margin-bottom: 50px;
-  height: 40%;
-  width: 400px;
-`;
-
-const NewAccountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-  border-radius: 6px;
-  height: 65px;
-  width: 355px;
-`;
-
-const StyledLink = styled(Link)`
-  color: #0366d6;
-  text-decoration: underline;
-  padding-left: 10px;
-`;
-
 export default LoginWithEmail;

@@ -22,7 +22,7 @@ const LoginPage = () => {
         <div className="form-container">
           <form>
             <Login />
-            <LoginWithEmail />
+            <LoginWithEmail accountCreated={true} />
           </form>
         </div>
       </div>

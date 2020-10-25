@@ -4,7 +4,8 @@ import "./App.css";
 
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
-import LoginInEmailPassword from "./components/LoginInEmailPassword";
+// import LoginInEmailPassword from "./components/LoginInEmailPassword"
+import LoginWithEmail from "./components/LoginInEmailPassword";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             <LoginPage accountCreated={true} />
           </Route>
           <Route exact path="/signup">
-            <LoginInEmailPassword accountCreated={false} />
+            <LoginWithEmail accountCreated={false} />
           </Route>
         </Switch>
       </div>
