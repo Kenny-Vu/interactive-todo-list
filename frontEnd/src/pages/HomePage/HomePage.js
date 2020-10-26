@@ -3,8 +3,8 @@ import "./HomePage.css";
 
 import Modal from "../../components/Modal/Modal";
 import Task from "../../components/Task/Task";
+import TaskEditor from "../../components/TaskEditor/TaskEditor";
 
-// import taskReducer, { initialState } from "../reducer/taskReducer";
 import StandardBtn from "../../components/StandardButton/StandardBtn";
 import { TaskContext } from "../../context/taskContext";
 
@@ -18,6 +18,8 @@ const HomePage = () => {
     editTask,
     openEditor,
     closeEditor,
+    openTaskEditor,
+    currentTask,
   } = useContext(TaskContext);
   return (
     <>
@@ -58,6 +60,13 @@ const HomePage = () => {
           openModal={openModal}
           setOpenModal={setOpenModal}
           addTask={addTask}
+        />
+      )}
+      {openTaskEditor && (
+        <TaskEditor
+          closeEditor={closeEditor}
+          currentTask={currentTask}
+          editTask={editTask}
         />
       )}
     </>

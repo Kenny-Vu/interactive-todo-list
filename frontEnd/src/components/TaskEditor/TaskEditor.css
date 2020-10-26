@@ -1,4 +1,4 @@
-.modal-container {
+.task-editor {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -9,7 +9,8 @@
   top: 0;
   left: 0;
 }
-.modal {
+
+.task-modal {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,14 +22,8 @@
   padding: 0.5rem;
 }
 
-.modal-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 @media only screen and (min-width: 800px) {
-  .modal {
+  .task-modal {
     width: 70%;
     height: 70%;
   }

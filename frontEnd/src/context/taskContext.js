@@ -27,7 +27,8 @@ export const TaskProvider = ({ children }) => {
     });
   };
 
-  const editTask = (task) => {
+  const editTask = (e, task) => {
+    e.preventDefault();
     dispatch({
       type: "EDIT_TASK",
       task,
@@ -48,6 +49,8 @@ export const TaskProvider = ({ children }) => {
         editTask,
         openEditor,
         closeEditor,
+        currentTask: state.currentTask,
+        openTaskEditor: state.openTaskEditor,
       }}
     >
       {children}

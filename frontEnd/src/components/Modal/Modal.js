@@ -4,6 +4,7 @@ import nextId from "react-id-generator";
 
 import StandardBtn from "../StandardButton/StandardBtn";
 import TextArea from "../TextArea/TextArea";
+import Input from "../Input/Input";
 
 const Modal = ({ openModal, setOpenModal, addTask }) => {
   const [taskName, setTaskName] = useState("");
@@ -20,6 +21,10 @@ const Modal = ({ openModal, setOpenModal, addTask }) => {
     setTaskDescription(e.target.value);
   };
 
+  const handleInput = (e) => {
+    setTaskName(e.target.value);
+  };
+
   return (
     <div className="modal-container">
       <div className="modal">
@@ -28,11 +33,7 @@ const Modal = ({ openModal, setOpenModal, addTask }) => {
           handleOnClick={() => setOpenModal(!openModal)}
         />
         <form className="modal-form">
-          <input
-            placeholder="Task name..."
-            className="task-name-input"
-            onChange={(e) => setTaskName(e.target.value)}
-          />
+          <Input handleInput={handleInput} />
           <TextArea handleTextArea={handleTaskDescription} />
           <StandardBtn text={"submit"} handleOnClick={createTask} />
         </form>
