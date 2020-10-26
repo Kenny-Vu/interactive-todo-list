@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
-import Login from "./LoginGoogle";
-import LoginWithEmail from "./LoginInEmailPassword";
+import Login from "../../components/LoginGoogle";
+import LoginWithEmail from "../../components/LoginInEmailPassword";
 
 const LoginPage = () => {
   return (

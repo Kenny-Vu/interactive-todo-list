@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
-import Home from "./components/Home";
-import LoginPage from "./components/LoginPage";
+import HomePage from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 // import LoginInEmailPassword from "./components/LoginInEmailPassword"
 import LoginWithEmail from "./components/LoginInEmailPassword";
 
@@ -13,7 +13,7 @@ function App() {
       <div className="app">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <HomePage />
           </Route>
           <Route path="/login">
             <LoginPage accountCreated={true} />

@@ -3,19 +3,21 @@ import "./Modal.css";
 import nextId from "react-id-generator";
 
 import StandardBtn from "../StandardButton/StandardBtn";
+import TextArea from "../TextArea/TextArea";
 
-const Modal = ({ openModal, setOpenModal, dispatch }) => {
+const Modal = ({ openModal, setOpenModal, addTask }) => {
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
 
   const createTask = (e) => {
     e.preventDefault();
     const taskId = nextId();
-    dispatch({
-      type: "ADD_TASK",
-      task: { id: taskId, task: taskName, description: taskDescription },
-    });
+    addTask({ taskId, taskName, taskDescription });
     setOpenModal(!openModal);
+  };
+
+  const handleTaskDescription = (e) => {
+    setTaskDescription(e.target.value);
   };
 
   return (
@@ -31,11 +33,7 @@ const Modal = ({ openModal, setOpenModal, dispatch }) => {
             className="task-name-input"
             onChange={(e) => setTaskName(e.target.value)}
           />
-          <textarea
-            placeholder="Add task description..."
-            className="task-description-textarea"
-            onChange={(e) => setTaskDescription(e.target.value)}
-          />
+          <TextArea handleTextArea={handleTaskDescription} />
           <StandardBtn text={"submit"} handleOnClick={createTask} />
         </form>
       </div>
